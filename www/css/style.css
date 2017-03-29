@@ -1,6 +1,5 @@
 /* Empty. Add your own CSS if you like */
 
-.testclass{
-
-width=100%
+.header .col {
+    background-color:lightgrey;
 }

@@ -1,0 +1,26 @@
+{
+	"success":true,
+	"customersinformation":[{
+	"customerid":"1233",
+	"name":"Test Customer 1",
+	"legalentity":"Corporation",
+	"address":"325 Lenox Ave. ",
+	"addressCity": "Oakland ",
+	"addressZip": "94610",
+	"addressState": "CA",
+	"telephone": "(555) 918-4109",
+	"fedtaxid":"123456789"
+	},
+	{
+	"customerid":"4211",
+	"name":"Nit Trucks Co",
+	"legalentity":"Privately Held Corporation",
+	"address":"7 Padanaram Rd",
+	"addressCity": "Danbury ",
+	"addressZip": "06811",
+	"addressState": "CT",
+	"telephone": "(475) 279-9133",
+	"fedtaxid":"123456789"
+	}],
+	"legalentities":["Corporation","Limited Liability Company","General Partnership","Limited Partnership","Municipality","Federal","Joint Venture","Non-Profit Corporation","Other","Privately Held Corporation","Publicly Held Corporation","Sub Chapter"]
+}

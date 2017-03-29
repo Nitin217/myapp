@@ -1,0 +1,56 @@
+<ion-view view-title="Customer Information" ng-controller="customersectionctrl as cs" ng-init="getdefaultdata()">
+ <ion-content>
+   <div class="list" >
+      <label class="item item-input item-stacked-label">
+          <span class="input-label">Company Legal Name</span>
+            <input type="text" placeholder=""  required ng-model="cs.savedcustinfo.coname">
+       </label>
+        <label class="item item-input item-select">
+          <span class="input-label">Legal Entity</span>
+           <select ng-model="cs.savedcustinfo.entity" ng-options="entity as entity for entity in cs.legalentities">
+      		<option value="">Not Selected</option>
+   		  </select>
+       </label>
+       <label class="item item-input item-stacked-label">
+          <span class="input-label">Business Address</span>
+            <input type="text" placeholder=""  required="" ng-model="cs.savedcustinfo.address">
+       </label>
+       <div>
+	       <label class="item item-input ">
+	          <span class="input-label">Zip Code</span>
+	            <input type="text" placeholder=""  required="" ng-model="cs.savedcustinfo.addressZip">
+	       </label>
+	        <label class="item item-input">
+	          <span class="input-label">City State</span>
+	            <input type="text" placeholder=""  required="" ng-model="cs.savedcustinfo.addressCityState">
+	       </label>
+       </div>
+       <label class="item item-input ">
+          <span class="input-label">Business Phone</span>
+            <input type="text" placeholder=""  required="" ng-model="cs.savedcustinfo.telephone">
+       </label>
+       <label class="item item-input ">
+          <span class="input-label">Fedral Tax ID</span>
+            <input type="text" placeholder=""  required="" ng-model="cs.savedcustinfo.fedtaxid">
+       </label>
+  
+        <label class="item item-input">
+          <span class="input-label">Date Of Established</span>
+            <input type="text" placeholder=""  required="" ng-model="dateofest">
+       </label>
+   
+   </div>
+   
+    <div class="row">
+    <!--    <div class="col text-left">
+    	 <a class="button button-small icon icon-left ion-person-stalker button-dark" href="#/mainapp/creditapplication/cust-section">Individual Guarantor</a>
+    	</div>
+      <div class="col text-right">
+      	<a class="button button-small item-button-right icon icon-left ion-person-stalker button-dark" href="#/mainapp/creditapplication/cust-section">Corporate Guaranter</a>
+      	</div> -->
+      	 <div class="col text-right">
+      	<a class="button button-small item-button-right icon icon-left ion-android-car button-dark" ng-click="saveCustomerInfo()" href="#/mainapp/creditapplication/fleet-section">Fleet Information</a>
+      	</div>
+     </div>
+ </ion-content>
+</ion-view>  

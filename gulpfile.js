@@ -39,7 +39,7 @@ const paths = config.paths;
 
 var developement = false;
 
-var targetFolder = bases.src+bases.sep+bases.applicationPath;
+var targetFolder = bases.src+bases.applicationPath;
 
 //gulp.task('default', ['sass']);
 

@@ -1,15 +1,26 @@
-<script id="login.html" type="text/ng-template">
-<ion-view>
+<ion-view view-title="LOGIN">
  <ion-content>
-    <div class="list">
-       <label class="item item-input"> Username
-       <input type="text" placeholder="">
+  
+    <div class="item item-image">
+      <img src="img/Transportation_DealerLoginPage.jpg">
+    </div>
+    <form name="loginForm"  novalidate>
+      <div class="list" ng-controller="LoginCtrl as vm">
+        <label class="item item-input item-stacked-label">
+          <span class="input-label">Username</span>
+            <input type="text" placeholder="" ng-model="vm.loginForm.username" required="">
+        </label>
+        <label class="item item-input item-stacked-label">
+          <span class="input-label">Password</span>
+            <input type="password" placeholder="" ng-model="vm.loginForm.password" required="">
        </label>
-    
-       <label class="item item-input">Password
-       <input type="password" placeholder="">
-       </label>
-    </div>  
+     	
+       <label class="item">
+          <button class="button button-block button-dark" type="submit" ng-click="vm.validateForm($event, loginForm)">Login</button>
+        </label>
+        
+        <div ng-show="vm.showerror" ><p class="assertive">{{vm.errorMessage}}</p></div>
+      </div>  
+    </form>
   </ion-content>
-</ion-view>  
-</script>
+</ion-view> 

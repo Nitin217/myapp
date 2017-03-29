@@ -1,0 +1,56 @@
+<ion-view view-title="Corporate Guarantor" ng-controller="guarantorctrl as gc">
+ <ion-content>
+   <div class="list">
+   
+    	<label class="item item-input item-select">
+          <span class="input-label">Party</span>
+           <select ng-model="gc.guainfo.type">
+		      <option selected>Guarantor</option>
+		      <option >Co Borrower</option>
+   		  </select>
+       </label>
+      <label class="item item-input item-stacked-label">
+          <span class="input-label">Company Name</span>
+            <input type="text" placeholder=""  required="" ng-model="gc.guainfo.coname">
+       </label>
+        <label class="item item-input item-select">
+          <span class="input-label">Legal Entity</span>
+           <select ng-model="gc.guainfo.enitity">
+          	  <option>Not Selected</option>
+		      <option>Corporation</option>
+		      <option>Limited Liability Company</option>
+   		  </select>
+       </label>
+       <label class="item item-input item-stacked-label">
+          <span class="input-label">Business Address</span>
+            <input type="text" placeholder=""  required="" ng-model="gc.guainfo.address">
+       </label>
+       <div>
+	       <label class="item item-input ">
+	          <span class="input-label">Zip Code</span>
+	            <input type="text" placeholder=""  required="" ng-model="gc.guainfo.addressZip">
+	       </label>
+	        <label class="item item-input">
+	          <span class="input-label">City State</span>
+	            <input type="text" placeholder=""  required="" ng-model="gc.guainfo.addressCityState">
+	       </label>
+       </div>
+       <label class="item item-input ">
+          <span class="input-label">Business Phone</span>
+            <input type="text" placeholder=""  required="" ng-model="gc.guainfo.telephone">
+       </label>
+       <label class="item item-input ">
+          <span class="input-label">Fedral Tax ID</span>
+            <input type="text" placeholder=""  required="" ng-model="gc.guainfo.fedtaxid">
+       </label>
+        
+   
+   </div>
+   
+    <div class="row">
+      	 <div class="col text-right">
+      	<a class="button button-small item-button-right icon icon-left ion-person-stalker button-dark" ng-click="saveguainfo()" href="#/mainapp/creditapplication/equipment-section">Enter Equipment</a>
+      	</div>
+     </div>
+ </ion-content>
+</ion-view>  

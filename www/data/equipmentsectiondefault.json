@@ -1,0 +1,9 @@
+{
+	"success":true,
+	"condition":["New","Used"],
+	"category":["Tractor","Trailer","Bus","Other"],
+	"description":["Other","Heavy Duty","Medium Duty"],
+	"manufacturer":["Other","International"],
+	"year":["2017","2016","2015"],
+	"model":["Test Model1","Test Model2","Test Model3","Test Model4","Test Model5"]
+}

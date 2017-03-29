@@ -1,0 +1,46 @@
+<ion-view view-title="Existing Fleet Information" ng-controller="fleetsecctrl as fs">
+ <ion-content>
+   <div class="list">
+      <label class="item item-input item-stacked-label">
+          <span class="input-label">Current Fleet Size of Heavy Duty Trucks</span>
+            <input type="text" placeholder=""  required="" ng-model="fs.fleetinfo.heavytrucks">
+       </label>
+       <label class="item item-input item-stacked-label">
+          <span class="input-label">Current Fleet Size of Medium Duty Trucks</span>
+            <input type="text" placeholder=""  required="" ng-model="fs.fleetinfo.mediumtrucks">
+       </label>
+    
+       <label class="item item-input item-stacked-label">
+          <span class="input-label">Number of Trailers</span>
+            <input type="text" placeholder=""  required="" ng-model="fs.fleetinfo.trailers">
+       </label>
+       <label class="item item-input item-stacked-label">
+          <span class="input-label">Number of Years in Business</span>
+            <input type="text" placeholder=""  required="" ng-model="fs.fleetinfo.businessyears">
+       </label>
+       
+       <label class="item item-input item-select">
+    		<div class="input-label">
+     		 Primary Business Vocation
+    		</div>
+		    <select ng-model="fs.fleetinfo.vocation">
+		      <option selected>Select</option>
+		      <option >Agriculture/Farming</option>
+		      <option>Beverage</option>
+		      <option>Construction</option>
+		    </select>
+  	   </label>
+       <ion-checkbox ng-model="fs.fleetinfo.interleasing">Is this Intercompany Leasing?</ion-checkbox>
+   
+   </div>
+   
+    <div class="row">
+    	<div class="col text-left">
+    	 <a class="button button-small icon icon-left ion-person-stalker button-dark" ng-click="saveFleetInfo()" href="#/mainapp/creditapplication/indi-guar-section">Individual Guarantor</a>
+    	</div>
+      <div class="col text-right">
+      	<a class="button button-small item-button-right icon icon-left ion-person-stalker button-dark" ng-click="saveFleetInfo()" href="#/mainapp/creditapplication/corp-guar-section">Corporate Guarantor</a>
+      	</div> 
+     </div>
+ </ion-content>
+</ion-view>  
