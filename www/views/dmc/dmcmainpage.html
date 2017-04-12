@@ -6,15 +6,17 @@
 	 		Deal status
  		 </div>
  		 <div class="col">Amount</div>
+ 		  <div class="col"></div>
  	</div>
+ 	<hr>
  	
- 	<div class="row " > 
- 		 <div class="col col-30">{{lssubmittalid}}</div>
+ 	<div class="row dmc-table" > 
+ 		 <div class="col col-25">{{lssubmittalid}}</div>
  		 <div class=" col "> 
 	 		 In Progress
  		 </div>
- 		 <div class="col">{{amount}}</div>
- 		 <div><a class="button button-small icon icon-left ion-paper-airplane button-dark" href="#">Actions</a></div>
+ 		 <div class="col">{{getamount()| currency}}</div>
+ 		 <div><a class="button button-small icon icon-left ion-paper-airplane button-dark" >Actions</a></div>
  	</div>
  	
  </ion-content>

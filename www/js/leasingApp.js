@@ -19,104 +19,111 @@ var leasingApp=angular.module('leasingApp', ['ionic'])
   });
   
 
-}).config(function($stateProvider, $urlRouterProvider) {
-  $stateProvider
-  .state('app', {
-    url: '/app',
-    abstract: true,
-    templateUrl: 'views/menu.html'
-  })
-  .state('app.login', {
-    url: '/login',
-    views: {
-      'menuContent': {
-        templateUrl: 'views/login/login.html'
-      }
-    }
-  }).state('app.home', {
-    url: '/home',
-    views: {
-      'menuContent': {
-        templateUrl: 'views/home.html'
-      }
-    }
-  })  .state('mainapp', {
-    url: '/mainapp',
-    abstract: true,
-    templateUrl: 'views/nomenu.html' ,
-    controller: 'homePageCtrl'
-  })
-  .state('mainapp.mainpage', {
-    url: '/mainPage',
-      views: {
-      'nomenuContent': {
-        templateUrl: 'views/mainPage.html'
-      }
-    }  
-  })
-  .state('mainapp.customersection', {
-    url: '/creditapplication/cust-section',
-      views: {
-      'nomenuContent': {
-        templateUrl: 'views/creditapplication/cust-section.html'
-      }
-    }  
-  })
-  .state('mainapp.fleetsection', {
-    url: '/creditapplication/fleet-section',
-      views: {
-      'nomenuContent': {
-        templateUrl: 'views/creditapplication/fleet-section.html'
-      }
-    }  
-  })
-    .state('mainapp.corporateguarantor', {
-    url: '/creditapplication/corp-guar-section',
-      views: {
-      'nomenuContent': {
-        templateUrl: 'views/creditapplication/corp-guar-section.html'
-      }
-    }  
-  })
-  .state('mainapp.individualguarantor', {
-    url: '/creditapplication/indi-guar-section',
-      views: {
-      'nomenuContent': {
-        templateUrl: 'views/creditapplication/indi-guar-section.html'
-      }
-    }  
-  })
-  .state('mainapp.equipmentsection', {
-    url: '/creditapplication/equipment-section',
-      views: {
-      'nomenuContent': {
-        templateUrl: 'views/creditapplication/equipment-section.html'
-      }
-    }  
-  })
-  .state('mainapp.agreementsection', {
-    url: '/creditapplication/agreement-section',
-      views: {
-      'nomenuContent': {
-        templateUrl: 'views/creditapplication/agreement-section.html'
-      }
-    }  
-  }).state('mainapp.successpage', {
-	    url: '/creditapplication/successpage',
+	}).config(function($stateProvider, $urlRouterProvider,$ionicConfigProvider) {
+	  $stateProvider
+	  .state('app', {
+	    url: '/app',
+	    abstract: true,
+	    templateUrl: 'views/menu.html'
+	  })
+	  .state('app.login', {
+	    url: '/login',
+	    views: {
+	      'menuContent': {
+	        templateUrl: 'views/login/login.html'
+	      }
+	    }
+	  }).state('app.home', {
+	    url: '/home',
+	    views: {
+	      'menuContent': {
+	        templateUrl: 'views/home.html'
+	      }
+	    }
+	  })  .state('mainapp', {
+	    url: '/mainapp',
+	    abstract: true,
+	    templateUrl: 'views/nomenu.html' ,
+	    controller: 'homePageCtrl'
+	  })
+	  .state('mainapp.mainpage', {
+	    url: '/mainPage',
 	      views: {
 	      'nomenuContent': {
-	        templateUrl: 'views/creditapplication/successpage.html'
+	        templateUrl: 'views/mainPage.html'
 	      }
 	    }  
 	  })
-  
-  .state('mainapp.dmcmainpage', {
-	    url: '/dmc/dmcmainpage',
+	  .state('mainapp.customersection', {
+	    url: '/creditapplication/cust-section',
 	      views: {
 	      'nomenuContent': {
-	        templateUrl: 'views/dmc/dmcmainpage.html'
+	        templateUrl: 'views/creditapplication/cust-section.html'
 	      }
 	    }  
-	  });
-  $urlRouterProvider.otherwise('/app/home');
-});
+	  })
+	  .state('mainapp.fleetsection', {
+	    url: '/creditapplication/fleet-section',
+	      views: {
+	      'nomenuContent': {
+	        templateUrl: 'views/creditapplication/fleet-section.html'
+	      }
+	    }  
+	  })
+	    .state('mainapp.corporateguarantor', {
+	    url: '/creditapplication/corp-guar-section',
+	      views: {
+	      'nomenuContent': {
+	        templateUrl: 'views/creditapplication/corp-guar-section.html'
+	      }
+	    }  
+	  })
+	  .state('mainapp.individualguarantor', {
+	    url: '/creditapplication/indi-guar-section',
+	      views: {
+	      'nomenuContent': {
+	        templateUrl: 'views/creditapplication/indi-guar-section.html'
+	      }
+	    }  
+	  })
+	  .state('mainapp.equipmentsection', {
+	    url: '/creditapplication/equipment-section',
+	      views: {
+	      'nomenuContent': {
+	        templateUrl: 'views/creditapplication/equipment-section.html'
+	      }
+	    }  
+	  })
+	  .state('mainapp.agreementsection', {
+	    url: '/creditapplication/agreement-section',
+	      views: {
+	      'nomenuContent': {
+	        templateUrl: 'views/creditapplication/agreement-section.html'
+	      }
+	    }  
+	  }).state('mainapp.successpage', {
+		    url: '/creditapplication/successpage',
+		      views: {
+		      'nomenuContent': {
+		        templateUrl: 'views/creditapplication/successpage.html'
+		      }
+		    }  
+		  })
+	  
+	  .state('mainapp.dmcmainpage', {
+		    url: '/dmc/dmcmainpage',
+		      views: {
+		      'nomenuContent': {
+		        templateUrl: 'views/dmc/dmcmainpage.html'
+		      }
+		    }  
+		  });
+	  $urlRouterProvider.otherwise('/app/home');
+	  $ionicConfigProvider.tabs.position('bottom'); // other values: top
+	 
+	});
+	leasingApp.value('creditappchecks', {increditapp:false, 
+	ifsafetocomeoutofcredit:true});
+
+
+

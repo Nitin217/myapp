@@ -1,56 +1,69 @@
 <ion-view view-title="Customer Information" ng-controller="customersectionctrl as cs" ng-init="getdefaultdata()">
  <ion-content>
+ <form name="company_form" id="company_form" ng-submit="saveCustomerInfo()" validate>
    <div class="list" >
       <label class="item item-input item-stacked-label">
           <span class="input-label">Company Legal Name</span>
-            <input type="text" placeholder=""  required ng-model="cs.savedcustinfo.coname">
+            <input type="text" name="coname" required=""  ng-model="cs.savedcustinfo.coname">
        </label>
+        <div ng-show="company_form.$submitted || company_form.coname.$touched">
+     		 <div class="errormsg icon icon-left ion-alert" ng-show="company_form.coname.$error.required"> Please enter the Company's Name.</div>
+   		 </div>
         <label class="item item-input item-select">
           <span class="input-label">Legal Entity</span>
            <select ng-model="cs.savedcustinfo.entity" ng-options="entity as entity for entity in cs.legalentities">
       		<option value="">Not Selected</option>
    		  </select>
        </label>
+       
        <label class="item item-input item-stacked-label">
           <span class="input-label">Business Address</span>
-            <input type="text" placeholder=""  required="" ng-model="cs.savedcustinfo.address">
+            <input type="text" name="cobusaddress"  required=""  ng-model="cs.savedcustinfo.address">
        </label>
+         <div ng-show="company_form.$submitted || company_form.cobusaddress.$touched">
+     		 <div class="errormsg icon icon-left ion-alert" ng-show="company_form.cobusaddress.$error.required"> Please enter the Company's address.</div>
+   		 </div>
        <div>
 	       <label class="item item-input ">
 	          <span class="input-label">Zip Code</span>
-	            <input type="text" placeholder=""  required="" ng-model="cs.savedcustinfo.addressZip">
+	            <input type="text" name="cozip"  required="" ng-model="cs.savedcustinfo.addressZip">
 	       </label>
+	       <div ng-show="company_form.$submitted || company_form.cozip.$touched">
+     		 <div class="errormsg icon icon-left ion-alert" ng-show="company_form.cozip.$error.required"> Please enter the Zip Code.</div>
+   		 </div>
 	        <label class="item item-input">
 	          <span class="input-label">City State</span>
-	            <input type="text" placeholder=""  required="" ng-model="cs.savedcustinfo.addressCityState">
+	            <input type="text" name="citystate"  required="" ng-model="cs.savedcustinfo.addressCityState">
 	       </label>
+	        <div ng-show="company_form.$submitted || company_form.citystate.$touched">
+     		 <div class="errormsg icon icon-left ion-alert" ng-show="company_form.citystate.$error.required"> Please enter the City State.</div>
+   		 </div>
        </div>
        <label class="item item-input ">
           <span class="input-label">Business Phone</span>
-            <input type="text" placeholder=""  required="" ng-model="cs.savedcustinfo.telephone">
+            <input phone-Input type="tel" placeholder="" required="" ng-model="cs.savedcustinfo.telephone">
        </label>
        <label class="item item-input ">
           <span class="input-label">Fedral Tax ID</span>
-            <input type="text" placeholder=""  required="" ng-model="cs.savedcustinfo.fedtaxid">
+            <input type="text" name="cofedtaxid"  required="" ng-model="cs.savedcustinfo.fedtaxid">
        </label>
+        <div ng-show="company_form.$submitted || company_form.cofedtaxid.$touched">
+     		 <div class="errormsg icon icon-left ion-alert" ng-show="company_form.cofedtaxid.$error.required"> Please enter the Fedral Tax ID.</div>
+   		 </div>
   
         <label class="item item-input">
           <span class="input-label">Date Of Established</span>
-            <input type="text" placeholder=""  required="" ng-model="dateofest">
+            <input type="date" placeholder=""   ng-model="dateofest">
        </label>
    
    </div>
-   
+    
     <div class="row">
-    <!--    <div class="col text-left">
-    	 <a class="button button-small icon icon-left ion-person-stalker button-dark" href="#/mainapp/creditapplication/cust-section">Individual Guarantor</a>
-    	</div>
-      <div class="col text-right">
-      	<a class="button button-small item-button-right icon icon-left ion-person-stalker button-dark" href="#/mainapp/creditapplication/cust-section">Corporate Guaranter</a>
-      	</div> -->
+
       	 <div class="col text-right">
-      	<a class="button button-small item-button-right icon icon-left ion-android-car button-dark" ng-click="saveCustomerInfo()" href="#/mainapp/creditapplication/fleet-section">Fleet Information</a>
+      	<button class="button button-small item-button-right icon icon-left ion-android-car button-dark"  >Fleet Information</button>
       	</div>
      </div>
+    </form>
  </ion-content>
 </ion-view>  

@@ -9,3 +9,21 @@
       </ion-nav-buttons>
 </ion-nav-bar>
   <ion-nav-view name="nomenuContent"></ion-nav-view>
+<div ng-controller="btm-tabscrtl">  
+    <ion-tabs class="tabs-icon-top tabs-dark">
+
+        <ion-tab title="Home" icon="ion-home" ng-click="gotopage('/mainapp/mainPage')" >
+          <ion-nav-view name="nomenuContent"></ion-nav-view>
+        </ion-tab>
+
+        <ion-tab title="About" icon="ion-ios-information" >
+          
+        </ion-tab>
+
+        <ion-tab title="Contact" icon="ion-ios-world">
+        
+        </ion-tab>
+
+      </ion-tabs>
+      
+ </div>

@@ -13,7 +13,7 @@ angular.module('leasingApp')
      
        	this.authenticateUser = function (loginForm) {
     	  //response= $http.post('http://localhost:8089'+'/authenticate', loginForm);
-    	 response= $http.get('/data/userdetails.json');
+    	 response= $http.get('data/userdetails.json');
     	   return response;
 	        };
 	        
@@ -41,7 +41,7 @@ angular.module('leasingApp')
 		
 		this.getdefaultpagedata = function () {
 		  //response= $http.post('http://localhost:8089'+'/authenticate', loginForm);
-		 response= $http.get('/data/defaultpagedata.json');
+		 response= $http.get('data/defaultpagedata.json');
 		 return response;
 		 };
 		    
@@ -112,7 +112,7 @@ angular.module('leasingApp')
 		
 		this.getdefaultpagedata = function () {
 		  //response= $http.post('http://localhost:8089'+'/authenticate', loginForm);
-		 response= $http.get('/data/equipmentsectiondefault.json');
+		 response= $http.get('data/equipmentsectiondefault.json');
 		 return response;
 		 };
 		    
