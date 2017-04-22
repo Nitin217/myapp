@@ -1,5 +1,5 @@
 
-var leasingApp=angular.module('leasingApp', ['ionic'])
+var leasingApp=angular.module('leasingApp', ['ionic','ngCordova','ngMap'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -24,23 +24,30 @@ var leasingApp=angular.module('leasingApp', ['ionic'])
 	  .state('app', {
 	    url: '/app',
 	    abstract: true,
-	    templateUrl: 'views/menu.html'
+	    templateUrl: 'views/nomenuwithouttabs.html'
 	  })
 	  .state('app.login', {
 	    url: '/login',
 	    views: {
-	      'menuContent': {
+	      'nomenuContentwithouttabs': {
 	        templateUrl: 'views/login/login.html'
 	      }
 	    }
-	  }).state('app.home', {
+	  }).state('mainapp.home', {
 	    url: '/home',
 	    views: {
-	      'menuContent': {
+	      'nomenuContentabout': {
 	        templateUrl: 'views/home.html'
 	      }
 	    }
-	  })  .state('mainapp', {
+	  }) .state('mainapp.contact', {
+		    url: '/contact',
+		    views: {
+		      'nomenuContentContact': {
+		        templateUrl: 'views/contact-us.html'
+		      }
+		    }
+		  }) .state('mainapp', {
 	    url: '/mainapp',
 	    abstract: true,
 	    templateUrl: 'views/nomenu.html' ,
@@ -117,8 +124,17 @@ var leasingApp=angular.module('leasingApp', ['ionic'])
 		        templateUrl: 'views/dmc/dmcmainpage.html'
 		      }
 		    }  
+		  })
+		  
+		  .state('mainapp.eot', {
+		    url: '/reports/eot',
+		      views: {
+		      'nomenuContent': {
+		        templateUrl: 'views/reports/eot-gog-map.html'
+		      }
+		    }  
 		  });
-	  $urlRouterProvider.otherwise('/app/home');
+	  $urlRouterProvider.otherwise('/app/login');
 	  $ionicConfigProvider.tabs.position('bottom'); // other values: top
 	 
 	});

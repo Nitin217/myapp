@@ -6,7 +6,7 @@
 			 hp.userdata=null;
 			
 			   $scope.logout=function(){
-			            $location.path('/app/home');
+			            $location.path('/app/login');
 			    };
 			    
 			    $scope.loadUserInfo=function(){
@@ -18,8 +18,8 @@
 	}])
 	
 // Customer Section controller
-	angular.module('leasingApp').controller('customersectionctrl',['$scope','$ionicPopup','$location','customersecservice','creditappchecks',
-	                                                               function($scope,$ionicPopup,$location,customersecservice,creditappchecks){
+	angular.module('leasingApp').controller('customersectionctrl',['$scope','$ionicPopup','$location','customersecservice','creditappchecks','$cordovaCamera','$ionicLoading','$cordovaBarcodeScanner',
+	                                                               function($scope,$ionicPopup,$location,customersecservice,creditappchecks,$cordovaCamera,$ionicLoading,$cordovaBarcodeScanner){
 		var cs=this;
 		cs.defaultdata=null;
 		cs.legalentities=null;
@@ -50,6 +50,22 @@
 				}
 				
 			});
+			/*
+			  Tesseract.recognize('img/test6.jpg').progress(function(progress){
+	             	 var progressStatus = progress.status + " [" + Math.ceil(progress.progress * 100) + "%]";
+		              	  $ionicLoading.show({
+		              	      template: progressStatus
+		              	    });
+	              //  console.log(progressStatus); 
+	             	    })
+	           .then(function(result) {
+	           	 $ionicLoading.hide();
+	           	 console.log(result.text);
+	           
+	           	 
+	           }).catch(function(err){
+	           	console.log('erro2',err);
+	           });*/
 			
 		};
 		
@@ -60,13 +76,104 @@
 			   });
 			$location.path('/mainapp/creditapplication/fleet-section');
 		}
-		/* $scope.$watch('savedcustinfo.telephone', function() {
-			 var country, city, number;
-			 city = cs.savedcustinfo.telephone.slice(0, 3);
-             number = cs.savedcustinfo.telephone.slice(3);
-             number = number.slice(0, 3) + '-' + number.slice(3);
-             cs.savedcustinfo.telephone= " (" + city + ") " + number;
-		  });*/
+		
+		
+		/*Uncomment code to use camera to scan*/
+		/*$scope.takePicture = function() {
+	        var options = { 
+	            quality : 100, 
+	            destinationType : Camera.DestinationType.FILE_URI, 
+	           // sourceType : Camera.PictureSourceType.CAMERA, 
+	            allowEdit : true,
+	            encodingType: Camera.EncodingType.JPEG,
+	            targetWidth: 200,
+	            targetHeight: 300,
+	          //  popoverOptions: CameraPopoverOptions,
+	            saveToPhotoAlbum: false
+	        };
+	        
+	  
+	 
+	        $cordovaCamera.getPicture(options).then(function(image) {
+	        	
+	            Tesseract.recognize(image).progress(function(progress){
+	              	 var progressStatus = progress.status + " [" + Math.ceil(progress.progress * 100) + "%]";
+		              	  $ionicLoading.show({
+		              	      template: progressStatus
+		              	    });
+	               //  console.log(progressStatus); 
+	              	    })
+	            .then(function(result) {
+	               alert( result.text);
+	            }).catch(function(err){
+	            	console.log('erro2',err);
+	            });
+	           
+	        }, function(err) {
+	            // An error occured. Show a message to the user
+	        	console.log('',err);
+	        
+	        });
+	    }*/
+		//Uncomment above code use camera to scan camera pictures.
+		
+		//code to scan bar code
+		
+		$scope.takePicture = function() {
+			
+		/*	$cordovaBarcodeScanner
+		      .scan(  {
+		          preferFrontCamera : true, // iOS and Android
+		          showFlipCameraButton : true, // iOS and Android
+		          showTorchButton : true, // iOS and Android
+		        //  torchOn: true, // Android, launch with the torch switched on (if available)
+		          prompt : "Place a barcode inside the scan area", // Android
+		          resultDisplayDuration: 500, // Android, display scanned text for X ms. 0 suppresses it entirely, default 1500
+		          formats : "QR_CODE,PDF_417", // default: all but PDF_417 and RSS_EXPANDED
+		          orientation : "landscape", // Android only (portrait|landscape), default unset so it rotates with the device
+		          disableAnimations : true, // iOS
+		          disableSuccessBeep: false // iOS
+		      })
+		      .then(function(barcodeData) {
+		        alert('data '+barcodeData.text +
+		                "Format: " + barcodeData.format);
+		       
+		      }, function(error) {
+		        // An error occurred
+		      });*/
+			
+			cordova.plugins.barcodeScanner.scan(
+				      function (result) {
+				          alert("We got a barcode\n" +
+				                "Result: " + result.text + "\n" +
+				                "Format: " + result.format + "\n" +
+				                "Cancelled: " + result.cancelled);
+				      },
+				      function (error) {
+				          alert("Scanning failed: " + error);
+				      },
+				      {
+				          preferFrontCamera : true, // iOS and Android
+				          showFlipCameraButton : true, // iOS and Android
+				          showTorchButton : true, // iOS and Android
+				        //  torchOn: true, // Android, launch with the torch switched on (if available)
+				          prompt : "Place a barcode inside the scan area", // Android
+				          resultDisplayDuration: 500, // Android, display scanned text for X ms. 0 suppresses it entirely, default 1500
+				          formats : "QR_CODE,PDF_417", // default: all but PDF_417 and RSS_EXPANDED
+				          orientation : "landscape", // Android only (portrait|landscape), default unset so it rotates with the device
+				          disableAnimations : true, // iOS
+				          disableSuccessBeep: false // iOS
+				      }
+				    
+				   );
+
+			
+		}
+		
+
+		
+		//code to scan bar code
+		
 		
 	}])
 	
@@ -301,6 +408,21 @@ angular.module('leasingApp')
 
 	    };
 	})
+	
+	
+	//EOT Controller
+	angular.module('leasingApp').controller('eotctrl',['$scope','NgMap',function($scope,NgMap){
+		NgMap.getMap().then(function(map) {
+		    console.log(map.getCenter());
+		    console.log('markers', map.markers);
+		    console.log('shapes', map.shapes);
+		  });
+		
+		
+	}])
+	
+	
+	
 	
 	;	
 	

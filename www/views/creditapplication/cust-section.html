@@ -2,13 +2,16 @@
  <ion-content>
  <form name="company_form" id="company_form" ng-submit="saveCustomerInfo()" validate>
    <div class="list" >
-      <label class="item item-input item-stacked-label">
-          <span class="input-label">Company Legal Name</span>
-            <input type="text" name="coname" required=""  ng-model="cs.savedcustinfo.coname">
-       </label>
-        <div ng-show="company_form.$submitted || company_form.coname.$touched">
+
+	 <div class=" row item item-input item-stacked-label paddingleft10">
+		    <span class="input-label ">Company Legal Name</span>
+		      <input type="text" name="coname" required=""  ng-model="cs.savedcustinfo.coname">
+       		 <button class="button item-button-right icon ion-camera button-dark camerabuttondet" ng-click="takePicture()"></button>
+   	</div> 
+   	 <div ng-show="company_form.$submitted || company_form.coname.$touched">
      		 <div class="errormsg icon icon-left ion-alert" ng-show="company_form.coname.$error.required"> Please enter the Company's Name.</div>
    		 </div>
+	
         <label class="item item-input item-select">
           <span class="input-label">Legal Entity</span>
            <select ng-model="cs.savedcustinfo.entity" ng-options="entity as entity for entity in cs.legalentities">
@@ -55,7 +58,7 @@
           <span class="input-label">Date Of Established</span>
             <input type="date" placeholder=""   ng-model="dateofest">
        </label>
-   
+   		
    </div>
     
     <div class="row">

@@ -16,12 +16,12 @@
           <ion-nav-view name="nomenuContent"></ion-nav-view>
         </ion-tab>
 
-        <ion-tab title="About" icon="ion-ios-information" >
-          
+        <ion-tab title="About" icon="ion-ios-information" ng-click="gotopage('/mainapp/home')" >
+           <ion-nav-view name="nomenuContentabout"></ion-nav-view>
         </ion-tab>
 
-        <ion-tab title="Contact" icon="ion-ios-world">
-        
+        <ion-tab title="Contact" icon="ion-ios-world" ng-click="gotopage('/mainapp/contact')">
+         <ion-nav-view name="nomenuContentContact"></ion-nav-view>
         </ion-tab>
 
       </ion-tabs>
