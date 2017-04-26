@@ -121,15 +121,15 @@
 		
 		$scope.takePicture = function() {
 			
-		/*	$cordovaBarcodeScanner
+		/*$cordovaBarcodeScanner
 		      .scan(  {
-		          preferFrontCamera : true, // iOS and Android
+		          preferFrontCamera : false, // iOS and Android
 		          showFlipCameraButton : true, // iOS and Android
 		          showTorchButton : true, // iOS and Android
 		        //  torchOn: true, // Android, launch with the torch switched on (if available)
-		          prompt : "Place a barcode inside the scan area", // Android
+		          prompt : "Place a barcode inside the scan area......", // Android
 		          resultDisplayDuration: 500, // Android, display scanned text for X ms. 0 suppresses it entirely, default 1500
-		          formats : "QR_CODE,PDF_417", // default: all but PDF_417 and RSS_EXPANDED
+		         // formats : "QR_CODE,PDF_417", // default: all but PDF_417 and RSS_EXPANDED
 		          orientation : "landscape", // Android only (portrait|landscape), default unset so it rotates with the device
 		          disableAnimations : true, // iOS
 		          disableSuccessBeep: false // iOS
@@ -139,41 +139,51 @@
 		                "Format: " + barcodeData.format);
 		       
 		      }, function(error) {
-		        // An error occurred
-		      });*/
+		        alert('error'+ error);
+		      }); 
+          }     */
 			
 			cordova.plugins.barcodeScanner.scan(
 				      function (result) {
-				          alert("We got a barcode\n" +
+				        /*  alert("We got a barcode\n" +
 				                "Result: " + result.text + "\n" +
 				                "Format: " + result.format + "\n" +
 				                "Cancelled: " + result.cancelled);
+                       var text=result.text;  */
+                      //  if(format=="PDF_147" && text.includes("DL00") )
+                       if(result.format=="PDF_417" )         
+                        {
+                          var nameTemp= text.substring(text.lastIndexOf("@")+1,text.lastIndexOf("DAG"));
+                          cs.savedcustinfo.coname=nameTemp.substring(31);
+                          cs.savedcustinfo.address=text.substring(text.lastIndexOf("DAG")+3,text.lastIndexOf("DAI"));
+                          cs.savedcustinfo.addressZip=text.substring(text.lastIndexOf("DAK")+3,text.lastIndexOf("DAQ"));
+                          cs.savedcustinfo.addressCityState=text.substring(text.lastIndexOf("DAI")+3,text.lastIndexOf("DAJ"))+"-"+
+                          text.substring(text.lastIndexOf("DAJ")+3,text.lastIndexOf("DAK"));
+				                } else if(!result.cancelled){
+                          alert('Please scan driving license');
+                        }
+                        
 				      },
 				      function (error) {
 				          alert("Scanning failed: " + error);
 				      },
 				      {
-				          preferFrontCamera : true, // iOS and Android
+				         // preferFrontCamera : true, // iOS and Android
 				          showFlipCameraButton : true, // iOS and Android
 				          showTorchButton : true, // iOS and Android
 				        //  torchOn: true, // Android, launch with the torch switched on (if available)
 				          prompt : "Place a barcode inside the scan area", // Android
 				          resultDisplayDuration: 500, // Android, display scanned text for X ms. 0 suppresses it entirely, default 1500
-				          formats : "QR_CODE,PDF_417", // default: all but PDF_417 and RSS_EXPANDED
+				          formats : "QR_CODE,PDF_417,DATA_MATRIX,UPC_E,UPC_A,EAN_8,EAN_13,CODE_128,CODE_39,CODE_93,CODABAR,ITF,RSS14,RSS_EXPANDED", // default: all but PDF_417 and RSS_EXPANDED
 				          orientation : "landscape", // Android only (portrait|landscape), default unset so it rotates with the device
 				          disableAnimations : true, // iOS
 				          disableSuccessBeep: false // iOS
 				      }
 				    
-				   );
-
-			
-		}
-		
-
-		
+				   );    
+           
 		//code to scan bar code
-		
+		     }
 		
 	}])
 	
