@@ -1,0 +1,107 @@
+{
+    "success":true,
+    "eotdata":[{
+        "customername":"Test Truck Company",
+        "accountschedule":"9874522-001",
+        "creditrequestid":"LS-232123",
+        "takedownid":"TLS-231232",
+        "fundedamount":"$23,123.23",
+        "dealenddate":"June-12-2017",
+        "state":"TX",
+        "zipcode":"73301"
+    },
+    {
+        "customername":"Acme Trucks",
+        "accountschedule":"9876622-001",
+        "creditrequestid":"LS-343232",
+        "takedownid":"TLS-238962",
+        "fundedamount":"$50,000.00",
+        "dealenddate":"June-21-2017",
+        "state":"TX",
+        "zipcode":"75203"
+    },  
+    {
+         "customername":"Acme Trucks",
+        "accountschedule":"9876622-001",
+        "creditrequestid":"LS-298332",
+        "takedownid":"TLS-258990",
+        "fundedamount":"$50,500.00",
+        "dealenddate":"July-10-2017",
+        "state":"AZ",
+        "zipcode":"85001"
+    },
+      {
+           "customername":"Acme Trucks",
+        "accountschedule":"9876622-001",
+        "creditrequestid":"LS-336789",
+        "takedownid":"TLS-259084",
+        "fundedamount":"$70,000.00",
+        "dealenddate":"Aug-1-2017",
+        "state":"CT",
+        "zipcode":"06811"
+    },
+      {
+        "customername":"Acme Trucks",
+        "accountschedule":"9876622-001",
+        "creditrequestid":"LS-343489",
+        "takedownid":"TLS-297645",
+        "fundedamount":"$100,000.00",
+        "dealenddate":"Oct-1-2017",
+        "state":"CO",
+        "zipcode":"80229"
+    }, {
+        "customername":"Test Truck Company",
+        "accountschedule":"9874522-001",
+        "creditrequestid":"LS-343533",
+        "takedownid":"TLS-2434334",
+        "fundedamount":"$55,000.00",
+        "dealenddate":"Sep-01-2017",
+        "state":"AZ",
+        "zipcode":"85063"
+    },
+     {
+         "customername":"Test Truck Company",
+        "accountschedule":"9874522-001",
+        "creditrequestid":"LS-454533",
+        "takedownid":"TLS-433422",
+        "fundedamount":"$67,000.00",
+        "dealenddate":"Nov-24-2017",
+        "state":"TX",
+        "zipcode":"75398"
+    }, {
+        "customername":"Acme Trucks",
+        "accountschedule":"9899922-001",
+        "creditrequestid":"LS-327733",
+        "takedownid":"TLS-223754",
+        "fundedamount":"$77336.00",
+        "dealenddate":"Dec-24-2017",
+        "state":"TX",
+        "zipcode":"75370"
+    }, {
+        "customername":"Test Trucking",
+        "accountschedule":"9876622-001",
+        "creditrequestid":"LS-344543",
+        "takedownid":"TLS-237459",
+        "fundedamount":"$99,022.00",
+        "dealenddate":"Dec-04-2017",
+        "state":"TX",
+        "zipcode":"73301"
+    }],
+    "databystates":[{
+        "state":"TX",
+        "deals":"5"
+    },
+    {
+        "state":"AZ",
+        "deals":"2"
+    },
+    {
+        "state":"CT",
+        "deals":"1"
+    }
+    ,{
+        "state":"CO",
+        "deals":"1"
+    }]
+    
+}

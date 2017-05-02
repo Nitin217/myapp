@@ -1,0 +1,19 @@
+<ion-view view-title="End Of Terms Details" ng-controller="eotdetailrptctrl">
+ 	<ion-content>
+		 <div class="row header " > 
+ 		 <div class="col col-25">Customer Name</div>
+ 		 <div class="col">Account Schedule</div>
+ 		 <div class="col">Funded Amount</div>
+ 		  <div class="col">Deal End Date</div>
+ 	</div>
+ 	<hr>
+	 <div ng-repeat="data in refineddataforreport">
+		 <div class="row dmc-table" > 
+ 		 <div  ng-class-odd="'col-25 coldataodd'" ng-class-even="'col-25 coldataeven'">{{data.customername}}</div>
+ 		 <div ng-class-odd="'col-25 coldataodd'" ng-class-even="' col-25 coldataeven'">{{data.accountschedule}}</div>
+ 		 <div ng-class-odd="' col-25 coldataodd'" ng-class-even="' col-25 coldataeven'">{{data.fundedamount}}</div>
+ 		  <div ng-class-odd="'col-25 coldataodd'" ng-class-even="'col-25 coldataeven'">{{data.dealenddate}}</div>
+	 </div>		
+	 		
+  	</ion-content>
+</ion-view> 

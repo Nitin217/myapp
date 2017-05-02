@@ -145,3 +145,34 @@ angular.module('leasingApp')
    
 }]);
 
+
+
+//customer section service
+angular.module('leasingApp')
+		.service('eotreportservice', ['$http', function ($http) {      
+
+		var eotdata;
+		var state;
+		this.getdataforreport = function () {
+		  //response= $http.post('http://localhost:8089'+'/authenticate', loginForm);
+		 response= $http.get('data/eottestdata.json');
+		 return response;
+		 };
+		    
+		 this.seteotdata=function(eotdata){
+			 this.eotdata=eotdata;
+		 }
+		
+		 this.geteotdata=function()
+		 {
+			 return this.eotdata;
+		 }
+		
+		this.setstateforrpt=function(st){
+			this.state=st;
+		}
+		this.getstateforrpt=function(){
+			return this.state;	
+		}
+}]);
+

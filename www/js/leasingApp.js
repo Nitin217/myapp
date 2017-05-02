@@ -133,7 +133,16 @@ var leasingApp=angular.module('leasingApp', ['ionic','ngCordova','ngMap'])
 		        templateUrl: 'views/reports/eot-gog-map.html'
 		      }
 		    }  
-		  });
+		  })
+				.state('mainapp.statedetails', {
+		    url: '/reports/eot/statedetails',
+		      views: {
+		      'nomenuContent': {
+		        templateUrl: 'views/reports/eot-state-details.html'
+		      }
+		    }  
+		  })
+			;
 	  $urlRouterProvider.otherwise('/app/login');
 	  $ionicConfigProvider.tabs.position('bottom'); // other values: top
 	 
