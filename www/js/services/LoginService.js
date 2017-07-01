@@ -147,7 +147,7 @@ angular.module('leasingApp')
 
 
 
-//customer section service
+//EOT section service
 angular.module('leasingApp')
 		.service('eotreportservice', ['$http', function ($http) {      
 
@@ -174,5 +174,34 @@ angular.module('leasingApp')
 		this.getstateforrpt=function(){
 			return this.state;	
 		}
+}]);
+
+angular.module('leasingApp')
+		.service('qrquoteservice', ['$http', function ($http) {      
+
+		
+		 var modeldata={
+			  	model:'',
+				manu:'',
+			 	clas:'',
+				price:'',
+		 		year:'',
+				imgsrc:'',
+				category:''
+		 }
+
+		 this.setmodeldata=function(model,manu,clas,price,year,imgsrc,category){
+			 modeldata.model=model;
+			 modeldata.manu=manu;
+			 modeldata.clas=clas;
+			 modeldata.price=price;
+			 modeldata.year=year;
+			 modeldata.imgsrc=imgsrc;
+			 modeldata.category=category
+		 }
+		 this.getmodeldata=function(){
+			 return modeldata;
+		 }
+
 }]);
 

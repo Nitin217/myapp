@@ -1,6 +1,7 @@
 
 	angular.module('leasingApp')
-		.controller('homePageCtrl',['$scope','$location','loginService','creditappchecks',function($scope,$location,loginService,creditappchecks) {
+		.controller('homePageCtrl',['$scope','$location','loginService','creditappchecks','qrquoteservice','$cordovaBarcodeScanner',
+		function($scope,$location,loginService,creditappchecks,qrquoteservice,$cordovaBarcodeScanner) {
 				
 			 var hp=this;
 			 hp.userdata=null;
@@ -14,6 +15,50 @@
 			    	hp.userdata=loginService.getUserData();
 			    	
 			    }
+
+
+				$scope.decode=function(){
+				cordova.plugins.barcodeScanner.scan(
+				      function (result) {
+                       var text=result.text;  
+                       if(result.format=="QR_CODE")         
+                        {
+						$scope.$apply(function(){
+							var model= text.substring(text.lastIndexOf("model:")+6,text.lastIndexOf(";manu:"));
+							var manu=text.substring(text.lastIndexOf(";manu:")+6,text.lastIndexOf(";class:"));
+							var clas=text.substring(text.lastIndexOf(";class:")+7,text.lastIndexOf(";year:"));
+							var year=text.substring(text.lastIndexOf(";year:")+6,text.lastIndexOf(";price:"));
+							var price=text.substring(text.lastIndexOf(";price:")+7,text.lastIndexOf(";category:"));
+							var category=text.substring(text.lastIndexOf(";category:")+10,text.lastIndexOf(";imgsrc:"));
+							var imgsrc=text.substring(text.lastIndexOf("imgsrc:")+7,text.lastIndexOf(";"));
+							qrquoteservice.setmodeldata(model,manu,clas,price,year,imgsrc,category);
+							$location.path('/mainapp/generateqrcode');
+						});
+					
+				        } else if(!result.cancelled){
+                        	  alert('Please scan QR Code');
+                        }
+                        
+				      },
+				      function (error) {
+				          alert("Scanning failed: " + error);
+				      },
+				      {
+				        
+				          showFlipCameraButton : true, // iOS and Android
+				          showTorchButton : true, // iOS and Android
+				          prompt : "Place a barcode inside the scan area", // Android
+				          resultDisplayDuration: 0, // Android, display scanned text for X ms. 0 suppresses it entirely, default 1500
+				          formats : "QR_CODE,PDF_417,DATA_MATRIX,UPC_E,UPC_A,EAN_8,EAN_13,CODE_128,CODE_39,CODE_93,CODABAR,ITF,RSS14,RSS_EXPANDED", // default: all but PDF_417 and RSS_EXPANDED
+				          orientation : "landscape", // Android only (portrait|landscape), default unset so it rotates with the device
+				          disableAnimations : true, // iOS
+				          disableSuccessBeep: false // iOS
+				      }
+				    
+				   ); 
+
+		}
+
 
 	}])
 	
@@ -153,14 +198,14 @@
                       //  if(format=="PDF_147" && text.includes("DL00") )
                        if(result.format=="PDF_417" )         
                         {
-						
-							var nameTemp= text.substring(text.lastIndexOf("@")+1,text.lastIndexOf("DAG"));
-							cs.savedcustinfo.coname=nameTemp.substring(31);
-							cs.savedcustinfo.address=text.substring(text.lastIndexOf("DAG")+3,text.lastIndexOf("DAI"));
-							cs.savedcustinfo.addressZip=text.substring(text.lastIndexOf("DAK")+3,text.lastIndexOf("DAQ"));
-							cs.savedcustinfo.addressCityState=text.substring(text.lastIndexOf("DAI")+3,text.lastIndexOf("DAJ"))+"-"+
-							text.substring(text.lastIndexOf("DAJ")+3,text.lastIndexOf("DAK"));
-					
+							$scope.$apply(function(){
+								var nameTemp= text.substring(text.lastIndexOf("@")+1,text.lastIndexOf("DAG"));
+								cs.savedcustinfo.coname=nameTemp.substring(31);
+								cs.savedcustinfo.address=text.substring(text.lastIndexOf("DAG")+3,text.lastIndexOf("DAI"));
+								cs.savedcustinfo.addressZip=text.substring(text.lastIndexOf("DAK")+3,text.lastIndexOf("DAQ"));
+								cs.savedcustinfo.addressCityState=text.substring(text.lastIndexOf("DAI")+3,text.lastIndexOf("DAJ"))+"-"+
+								text.substring(text.lastIndexOf("DAJ")+3,text.lastIndexOf("DAK"));
+							});
 				        } else if(!result.cancelled){
                         	  alert('Please scan driving license');
                         }
@@ -747,6 +792,25 @@ angular.module('leasingApp')
 						}
 						});
   			});
+	})
+
+	angular.module('leasingApp').controller('barcodectrl',function($scope,$cordovaBarcodeScanner,qrquoteservice){
+		
+		
+
+		  $scope.$on("$ionicView.beforeEnter", function() {
+			  	var qrcodedata=qrquoteservice.getmodeldata();
+				$scope.model=qrcodedata.model;
+				$scope.manu=qrcodedata.manu;
+				$scope.assetclass=qrcodedata.clas;
+				$scope.year=qrcodedata.year;
+				$scope.price=qrcodedata.price;
+				$scope.category=qrcodedata.category;
+				$scope.imgsrc=qrcodedata.imgsrc;
+  			});
+
+		
+
 	})
 	
 	;	

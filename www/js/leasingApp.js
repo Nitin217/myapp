@@ -142,6 +142,14 @@ var leasingApp=angular.module('leasingApp', ['ionic','ngCordova','ngMap'])
 		      }
 		    }  
 		  })
+				.state('mainapp.generateQrcode', {
+		    url: '/generateqrcode',
+		      views: {
+		      'nomenuContent': {
+		        templateUrl: 'views/qrcode-generator.html'
+		      }
+		    }  
+		  })
 			;
 	  $urlRouterProvider.otherwise('/app/login');
 	  $ionicConfigProvider.tabs.position('bottom'); // other values: top
