@@ -166,28 +166,6 @@
 		
 		$scope.takePicture = function() {
 			
-		/*$cordovaBarcodeScanner
-		      .scan(  {
-		          preferFrontCamera : false, // iOS and Android
-		          showFlipCameraButton : true, // iOS and Android
-		          showTorchButton : true, // iOS and Android
-		        //  torchOn: true, // Android, launch with the torch switched on (if available)
-		          prompt : "Place a barcode inside the scan area......", // Android
-		          resultDisplayDuration: 500, // Android, display scanned text for X ms. 0 suppresses it entirely, default 1500
-		         // formats : "QR_CODE,PDF_417", // default: all but PDF_417 and RSS_EXPANDED
-		          orientation : "landscape", // Android only (portrait|landscape), default unset so it rotates with the device
-		          disableAnimations : true, // iOS
-		          disableSuccessBeep: false // iOS
-		      })
-		      .then(function(barcodeData) {
-		        alert('data '+barcodeData.text +
-		                "Format: " + barcodeData.format);
-		       
-		      }, function(error) {
-		        alert('error'+ error);
-		      }); 
-          }     */
-			
 			cordova.plugins.barcodeScanner.scan(
 				      function (result) {
 				        /*  alert("We got a barcode\n" +
@@ -290,7 +268,8 @@
 	
 	//equipment section controller
 	
-	angular.module('leasingApp').controller('equipsectionctrl',['$scope','$ionicPopup','equipsecservice',function($scope,$ionicPopup,equipsecservice){
+	angular.module('leasingApp').controller('equipsectionctrl',['$scope','$ionicPopup','equipsecservice','$ionicSlideBoxDelegate',
+	function($scope,$ionicPopup,equipsecservice,$ionicSlideBoxDelegate){
 		var es=this;
 		es.category=null;
 		es.condition=null;
@@ -299,7 +278,7 @@
 		es.year=null;
 		es.model=null;
 		es.savedequipmentinfo={
-				   condition:'New',
+				   condition:'false',
 				   category:'Not Selected',
 				   description:'Not Selected',
 				   manufacturer:'Not Selected',
@@ -315,9 +294,8 @@
 					es.condition=response.data.condition;
 					es.category=response.data.category;
 					es.description=response.data.description;
-					es.manufacturer=response.data.manufacturer;
 					es.year=response.data.year;
-					es.model=response.data.model;
+					//es.model=response.data.model;
 					
 				}
 				
@@ -332,11 +310,62 @@
 			     template: 'Equiment data saved.'
 			   });
 		}
+
+		$scope.resetclassmanu=function(){
+			 es.model='';
+			 es.savedequipmentinfo.description='Not Selected';
+			 es.savedequipmentinfo.manufacturer='Not Selected';
+		}
+
+		 $scope.getManufacturer=function(){
+			
+			equipsecservice.getManufacturer().then(function successCallback(response){
+				if(response && response.data && response.data.success){  
+			
+					for(var i=0;i<response.data.manu.length;i++)
+					{
+						if(response.data.manu[i].category==es.savedequipmentinfo.category && 
+							response.data.manu[i].type==es.savedequipmentinfo.description ){
+							es.manufacturer=response.data.manu[i].manufacturer;
+							
+						}
+					}
+					
+					
+				}
+				
+			});
+			
+		};
+
+		$scope.getModel=function(){
+			equipsecservice.getModelsList(es.savedequipmentinfo.category,es.savedequipmentinfo.description).then(function successCallback(response){
+					if(response && response.data && response.data.success){  
+						for(var i=0;i<response.data.models.length;i++)
+						{
+							if(response.data.manufacturer==es.savedequipmentinfo.manufacturer){
+								es.model=response.data.models;
+								es.savedequipmentinfo.model=es.model[$ionicSlideBoxDelegate.currentIndex() ].varient[0];
+								setTimeout(function() {
+									$ionicSlideBoxDelegate.slide(0);
+									$ionicSlideBoxDelegate.update();
+									$scope.$apply();
+								});
+								
+							}
+						}
+				}
+			});
+		}
+		$scope.slideChanged=function(varient){
+	
+				es.savedequipmentinfo.model=es.model[$ionicSlideBoxDelegate.currentIndex() ].varient[0];
+		}
 		
 	}])
 	
-	angular.module('leasingApp').controller('agreementsectionctrl',['$scope','customersecservice','fleetsecservice','guaranteorservice','equipsecservice','agreementservice','creditappchecks',
-	                                                                function($scope,customersecservice,fleetsecservice,guaranteorservice,equipsecservice,agreementservice,creditappchecks){
+	angular.module('leasingApp').controller('agreementsectionctrl',['$scope','customersecservice','fleetsecservice','guaranteorservice','equipsecservice','agreementservice','creditappchecks','$ionicModal',
+	                                                                function($scope,customersecservice,fleetsecservice,guaranteorservice,equipsecservice,agreementservice,creditappchecks,$ionicModal){
 		$scope.lssubmittalid='LS-123456';
 		$scope.amount=agreementservice.getsaleprice();
 		$scope.savecreditapp=function()
@@ -353,6 +382,48 @@
 		{
 			return agreementservice.getsaleprice()
 		}
+		///////added modal
+    
+    $scope.modal = $ionicModal.fromTemplate( '<ion-modal-view style="  min-height: 0 !important; width: 50%; height: 40%; top: 15%; left: 25%; right: 25%; bottom: 45%; border:1px;">' +
+		    '<div class="bar bar-header bar-dark">'+
+ 			'<h1 class="title">Actions</h1>'+
+			'</div> <br><br>'+  
+     		'<ion-content>'+
+      		' <div><a class="button icon icon-left ion-document-text button-stable">Action</a></div>' +
+         	'<HR>'+
+         	' <div><a class="button icon icon-left ion-document-text button-stable">View Notification</a></div>' +
+         	'<HR>'+
+          	' <div><a class="button icon icon-left ion-arrow-return-right button-stable">Copy to New App</a></div>' +
+           	'<HR>'+
+          	' <div><a class="button icon icon-left ion-refresh button-stable">Resubmit Credit</a></div>' +
+      		'</ion-content>' +	
+			'</ion-modal-view>', {
+				scope: $scope,
+				animation: 'slide-in-up'
+			})
+
+   $scope.openModal = function() {
+      $scope.modal.show();
+   };
+	
+   $scope.closeModal = function() {
+      $scope.modal.hide();
+   };
+	
+   //Cleanup the modal when we're done with it!
+   $scope.$on('$destroy', function() {
+      $scope.modal.remove();
+   });
+	
+   // Execute action on hide modal
+   $scope.$on('modal.hidden', function() {
+      // Execute action
+   });
+	
+   // Execute action on remove modal
+   $scope.$on('modal.removed', function() {
+      // Execute action
+   });
 		
 	}])
 	
@@ -426,7 +497,7 @@ angular.module('leasingApp')
 	angular.module('leasingApp').filter('tel', function () {
 	    return function (tel) {
 	    	
-	        console.log(tel);
+	       // console.log(tel);
 	        if (!tel) { return ''; }
 
 	        var value = tel.toString().trim().replace(/^\+/, '');

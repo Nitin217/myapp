@@ -1,0 +1,29 @@
+{
+        "success":true,
+        "manu":[
+        {
+            "category":"Truck",
+            "type":"Heavy Duty",
+            "manufacturer":["International","Freightliner","Western Star"]
+            
+        },
+        {
+            "category":"Truck",
+            "type":"Medium Duty",
+            "manufacturer":["Peterbilt","Freightliner"]
+            
+        },
+        {
+            "category":"Tractor",
+            "type":"Medium Duty",
+            "manufacturer":["Ford","Freightliner"]
+            
+        },
+         {
+            "category":"Tractor",
+            "type":"Heavy Duty",
+            "manufacturer":["Volvo"]
+            
+        }
+    ]
+}

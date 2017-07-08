@@ -1,7 +1,7 @@
 {
 	"success":true,
 	"condition":["New","Used"],
-	"category":["Tractor","Trailer","Bus","Other"],
+	"category":["Tractor","Truck","Trailer","Bus","Other"],
 	"description":["Other","Heavy Duty","Medium Duty"],
 	"manufacturer":["Other","International"],
 	"year":["2017","2016","2015"],

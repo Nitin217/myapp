@@ -1,0 +1,15 @@
+{
+	"success":true,
+    "models":[
+        {
+            "manufacturer":"Ford",
+            "model":"F750 SD XL: Conv Super Cab Tractor 4X2 (CA84)",
+            "img":"Tractor Medium Duty Ford F750 SD XL.jpg"
+        },
+        {
+            "manufacturer":"Freightliner",
+            "model":"M2-Series: M106 Conv Cab 4X2",
+            "img":"338-ct.jpg"
+        }
+    ]
+}

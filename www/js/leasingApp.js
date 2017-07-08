@@ -33,14 +33,16 @@ var leasingApp=angular.module('leasingApp', ['ionic','ngCordova','ngMap'])
 	        templateUrl: 'views/login/login.html'
 	      }
 	    }
-	  }).state('mainapp.home', {
-	    url: '/home',
-	    views: {
-	      'nomenuContentabout': {
-	        templateUrl: 'views/home.html'
-	      }
-	    }
-	  }) .state('mainapp.contact', {
+	  })
+		// .state('mainapp.home', {
+	  //   url: '/home',
+	  //   views: {
+	  //     'nomenuContentabout': {
+	  //       templateUrl: 'views/home.html'
+	  //     }
+	  //   }
+	  // }) 
+		.state('mainapp.contact', {
 		    url: '/contact',
 		    views: {
 		      'nomenuContentContact': {

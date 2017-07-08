@@ -1,30 +1,35 @@
 <ion-view view-title="Equipment Details" ng-controller="equipsectionctrl as es" ng-init="getdefaultdata()">
  <ion-content>
+    
    <div class="list">
-    <label class="item item-input item-stacked-label">
-          <span class="input-label">Quantity</span>
-            <input type="text" placeholder=""  required="">
-    </label>
-    <label class="item item-input item-select">
-          <span class="input-label">Condition</span>
-           <select ng-model="es.savedequipmentinfo.condition" ng-options="condition as condition for condition in es.condition">
-            <option value="">Not Selected</option>
-   		  </select>
-     </label>
+     <div class="row">
+      <label class="row item item-input item-stacked-label itemwithoutborder">
+            <span class="input-label">Quantity</span>
+              <input type="number" name="qty" required="">
+              
+      </label>
+      <ion-toggle class="itemwithoutborder" ng-model="es.savedequipmentinfo.condition"  ng-checked="es.savedequipmentinfo.condition" toggle-class="toggle-calm ">New</ion-toggle>
+   </div>
+
+    
      <label class="item item-input item-select">
           <span class="input-label">Category</span>
-           <select ng-model="es.savedequipmentinfo.category" ng-options="category as category for category in es.category">
+           <select ng-model="es.savedequipmentinfo.category"  ng-change="resetclassmanu()" ng-options="category as category for category in es.category">
             <option value="">Not Selected</option>
           </select>
      </label>
       <label class="item item-input item-select">
           <span class="input-label">Asset Class</span>
-            <select ng-model="es.savedequipmentinfo.description" ng-options="description as description for description in es.description">
+            <select ng-model="es.savedequipmentinfo.description" 
+            ng-options="description as description for description in es.description"
+            ng-change="getManufacturer()">
              <option value="">Not Selected</option></select>
      </label>
       <label class="item item-input item-select">
           <span class="input-label">Manufacturer</span>
-          <select ng-model="es.savedequipmentinfo.manufacturer" ng-options="manufacturer as manufacturer for manufacturer in es.manufacturer">
+          <select ng-model="es.savedequipmentinfo.manufacturer" 
+          ng-options="manufacturer as manufacturer for manufacturer in es.manufacturer"
+          ng-change="getModel()">
            <option value="">Not Selected</option></select>
      </label>
       <label class="item item-input item-select">
@@ -33,16 +38,28 @@
              <option value="">Not Selected</option>
             </select>
      </label>
-      <label class="item item-input item-select">
-          <span class="input-label">Model</span>
-            <select ng-model="es.savedequipmentinfo.model" ng-options="model as model for model in es.model">
-             <option value="">Not Selected</option>
-            </select>
-     </label>
-      <label class="item item-input item-stacked-label">
-          <span class="input-label">Sale Price</span>
+     <div>
+        <ion-slide-box  show-pager="{{es.model.length > 1 ? true : false}}" on-slide-changed="slideChanged(Index)">
+          <ion-slide ng-repeat="model in es.model">
+            <div><img src={{model.img}}  style="width:100%;height:300px;margin:auto;display:block" ></div>
+
+            <label class="item item-input item-select">
+              <span class="input-label">Model</span>
+                <select ng-model="es.savedequipmentinfo.model"
+                 ng-options="model as model for model in model.varient">
+                </select>
+            </label>
+             <label class="row item item-input item-stacked-label">
+             <span class="input-label">Sale Price</span>
             <input type="number" ng-model="es.savedequipmentinfo.saleprice" type="text" placeholder=""  required="">
-       </label>
+         </label>
+        
+         </ion-slide>
+          
+        </ion-slide-box>
+      </div>
+      
+     
    
    </div>
    

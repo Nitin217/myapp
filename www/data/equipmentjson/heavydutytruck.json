@@ -1,0 +1,19 @@
+{
+	"success":true,
+    "manufacturer":"International",
+    "models":[
+        {
+           
+            "model":"7000-Series",
+            "img":"img/Truck Heavy Duty International 7000-Series 2017.jpg",
+            "varient":["7000-Series:7400 107' BBC Conv Cab Truck 6X6","7000-Series:7400 107' BBC Conv Cab Truck 46X4","7000-Series:7400 107' BBC Conv Cab Truck 4X4","7000-Series:7400 107' BBC Conv Cab Truck 4X2"
+            ,"7000-Series:7300 107' BBC Conv Cab Truck 4X4","7000-Series:7300 107' BBC Conv Cab Truck 4X2"]
+        },
+        {
+            "model":"LoadStar-Series",
+            "img":"img/Freightliner M2-Series -M106 Conv Cab 4X2.jpg",
+             "varient":["LoadStar-Series:LD01 4X2","LoadStar-Series:LD01 6X4","LD01 8X4"]
+        }
+       
+    ]
+}

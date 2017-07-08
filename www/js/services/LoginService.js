@@ -114,7 +114,34 @@ angular.module('leasingApp')
 		  //response= $http.post('http://localhost:8089'+'/authenticate', loginForm);
 		 response= $http.get('data/equipmentsectiondefault.json');
 		 return response;
-		 };
+		};
+		
+		this.getManufacturer=function(){
+		response= $http.get('data/manufacturer.json');
+		 return response;
+		}
+
+		this.getModelsList=function(category,type)
+		{
+			
+			if(type=='Heavy Duty' && category=="Truck")
+			{
+				response= $http.get('data/equipmentjson/heavydutytruck.json');
+				
+			}else if(type=='Medium Duty' && category=="Truck"){
+				response= $http.get('data/equipmentjson/mediumdutytrucks.json');
+				
+			}
+			return response;
+			// else if(category=='Heavy Duty' && type=="Tractor"){
+			// 	response= $http.get('data/equipmentjson/heavydutytractor.json');
+			// 	return response;
+			// }
+			// else{
+			// 	response= $http.get('data/equipmentjson/mediumdutytractor.json');
+			// 	return response;
+			// }
+		}
 		    
 		
 		 this.setSavedEquipmentInfo=function(cusinfo)

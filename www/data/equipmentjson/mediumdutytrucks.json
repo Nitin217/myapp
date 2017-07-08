@@ -1,0 +1,22 @@
+{
+	"success":true,
+    "manufacturer":"Peterbilt",
+    "models":[
+        {
+            
+            "model":"325-Series",
+            "img":"img/Truck Medium Duty Peterbilt 325-Series.jpg",
+            "varient":["325-Series:325 Conv Cab 4X2 (CA80-204)"]
+        },
+        {
+             "model":"330-Series",
+            "img":"img/Freightliner M2-Series -M106 Conv Cab 4X2.jpg",
+            "varient":["330-Series:330 Conv Cab 4X2 (CA80-204)"]
+        },
+         {
+            "model":"340-Series",
+            "img":"img/Western_Star-4900_mp696_pic_40240.jpg",
+            "varient":["330-Series:340 Conv Cab 4X2 (CA80-204)"]
+        }
+    ]
+}

@@ -1,0 +1,56 @@
+<ion-view view-title="Equipment Details" ng-controller="equipsectionctrl as es" ng-init="getdefaultdata()">
+ <ion-content>
+   <div class="list">
+    <label class="item item-input item-stacked-label">
+          <span class="input-label">Quantity</span>
+            <input type="text" placeholder=""  required="">
+    </label>
+    <label class="item item-input item-select">
+          <span class="input-label">Condition</span>
+           <select ng-model="es.savedequipmentinfo.condition" ng-options="condition as condition for condition in es.condition">
+            <option value="">Not Selected</option>
+   		  </select>
+     </label>
+     <label class="item item-input item-select">
+          <span class="input-label">Category</span>
+           <select ng-model="es.savedequipmentinfo.category" ng-options="category as category for category in es.category">
+            <option value="">Not Selected</option>
+          </select>
+     </label>
+      <label class="item item-input item-select">
+          <span class="input-label">Asset Class</span>
+            <select ng-model="es.savedequipmentinfo.description" ng-options="description as description for description in es.description">
+             <option value="">Not Selected</option></select>
+     </label>
+      <label class="item item-input item-select">
+          <span class="input-label">Manufacturer</span>
+          <select ng-model="es.savedequipmentinfo.manufacturer" ng-options="manufacturer as manufacturer for manufacturer in es.manufacturer">
+           <option value="">Not Selected</option></select>
+     </label>
+      <label class="item item-input item-select">
+          <span class="input-label">Year</span>
+            <select ng-model="es.savedequipmentinfo.year" ng-options="year as year for year in es.year">
+             <option value="">Not Selected</option>
+            </select>
+     </label>
+      <label class="item item-input item-select">
+          <span class="input-label">Model</span>
+            <select ng-model="es.savedequipmentinfo.model" ng-options="model as model for model in es.model">
+             <option value="">Not Selected</option>
+            </select>
+     </label>
+      <label class="item item-input item-stacked-label">
+          <span class="input-label">Sale Price</span>
+            <input type="number" ng-model="es.savedequipmentinfo.saleprice" type="text" placeholder=""  required="">
+       </label>
+   
+   </div>
+   
+   <div class="row">
+      	 <div class="col text-right">
+      	<a class="button button-small item-button-right icon icon-left ion-clipboard button-dark" ng-click="saveequipment()" href="#/mainapp/creditapplication/agreement-section">Agreement Section</a>
+      	</div>
+     </div>
+  </ion-content>
+  </ion-view>
+  
