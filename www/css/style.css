@@ -25,6 +25,16 @@
 .paddingleft10{
 	padding-left: 13px;
 }
+
+ .item-stacked-label .input-labelovrr{
+    display: inline-block;
+    padding: 4px 40px 0 0px;
+    vertical-align: middle;
+ }
+.qtybox{
+    padding-right: 20px;
+}
+
 .paddingright10{
 	padding-right: 10px;
 }
@@ -97,4 +107,13 @@ padding-left:20px;
 .itemwithoutborder{
         border-width: 0px
 }
+.slider .slider-pager {
+ position: absolute;
+  top: 5px;
+  left: 0;
+  z-index: 100;
+  width: 100%;
+  height: 10px;
+  text-align: center;
+} 
 

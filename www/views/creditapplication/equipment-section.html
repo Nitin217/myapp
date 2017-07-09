@@ -3,9 +3,9 @@
     
    <div class="list">
      <div class="row">
-      <label class="row item item-input item-stacked-label itemwithoutborder">
-            <span class="input-label">Quantity</span>
-              <input type="number" name="qty" required="">
+      <label class="row item item-input item-stacked-label itemwithoutborder paddingleft10">
+            <span class="input-labelovrr">Quantity</span>
+              <input type="number"  name="qty" required="">
               
       </label>
       <ion-toggle class="itemwithoutborder" ng-model="es.savedequipmentinfo.condition"  ng-checked="es.savedequipmentinfo.condition" toggle-class="toggle-calm ">New</ion-toggle>
@@ -49,7 +49,7 @@
                  ng-options="model as model for model in model.varient">
                 </select>
             </label>
-             <label class="row item item-input item-stacked-label">
+             <label class="row item item-input item-stacked-label  paddingleft10">
              <span class="input-label">Sale Price</span>
             <input type="number" ng-model="es.savedequipmentinfo.saleprice" type="text" placeholder=""  required="">
          </label>
