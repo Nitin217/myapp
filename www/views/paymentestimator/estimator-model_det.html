@@ -1,0 +1,64 @@
+<ion-view view-title="Submit Quote" ng-controller="barcodectrl as cs">
+ <<ion-content>
+   <div class="list">
+ 	 		<!--<div class="item-body">
+	     	 <div class="item-image"><img src={{imgsrc}}></div>
+            <div class="center">
+              	<b>{{model}}</b> 
+            </div>
+            <div  class="row">
+              
+            </div>
+ 	 		</div>-->
+    
+   <div class="headergen"> International</div>
+   <div class="subheadergen">7000-series:7400 107" BBC Conv Cab Truck </div>
+   <div class="item item-image">
+            <img src="img\trucks\7000-series-7400.jpg">
+    </div>
+    <label class="item item-input item-select">
+          <span class="input-label">Year</span>
+            <select ng-model="cs.savedestimatorinfo.year">
+             <option value="2018">2018</option>
+             <option value="2017">2017</option>
+             <option value="2016">2016</option>
+            </select>
+     </label>
+     <label class="row item item-input item-stacked-label  paddingleft10">
+             <span class="input-label">Sale Price</span>
+            <input type="number" ng-model="cs.savedestimatorinfo.salesprice" type="text" placeholder=""  required="">
+    </label>
+      <label class="item item-input item-select">
+          <span class="input-label">Product</span>
+            <select ng-model="cs.savedestimatorinfo.product">
+             <option value="Loan-Precompute">Loan-Precompute</option>
+             <option value="Loan-Level Principal">Loan-Level Principal</option>
+            </select>
+     </label>
+     <label class="row item item-input item-stacked-label  paddingleft10">
+             <span class="input-label input-labelgen1">Term</span>
+             <span class="input-label input-labelgen1"> {{cs.savedestimatorinfo.term}}</span>
+            <div class="range range-positive" itemwithoutborder>
+              <i>12</i>
+              <input class="itemwithoutborder" type="range" ng-model="cs.savedestimatorinfo.term" name="term" min="12" max="120">
+            <i>120</i>
+           </div>
+    </label>
+       <label class="item item-input item-select">
+          <span class="input-label">Payment Option</span>
+            <select ng-model="cs.savedestimatorinfo.paymentoption">
+             <option value="Monthly">Monthly</option>
+             <option value="Quaterly">Quaterly</option>
+             <option value="Semiannual">Semiannual</option>
+             <option value="Annual">Annual</option>
+            </select>
+     </label>    
+   </div>
+      <div class="row">
+      	 <div class="col text-right">
+          	<div><a class="button button-small icon icon-left ion-paper-airplane button-dark" ng-click="openModal()">Adjust Fees</a></div>
+      	</div>
+     </div>
+<!--model:7000-series:7400 107" BBC Conv Cab Truck;manu:International;class:Heavy Duty;year:2017;price:50000;category:Truck;imgsrc:img\trucks\7000-series-7400.jpg;-->
+ </ion-content>
+</ion-view>

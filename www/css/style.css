@@ -116,4 +116,24 @@ padding-left:20px;
   height: 10px;
   text-align: center;
 } 
-
+.headergen{
+    padding: 5px 0px 5px 15px;
+    font-weight: bold;
+}
+.subheadergen{
+    padding: 5px 0px 5px 15px;
+    
+}
+.input-labelgen1{
+    max-width: 60px;
+}
+.fullwidth{
+    display: flex;
+    
+}
+.paymentestfeelabel{
+    width: 60%;
+}
+.row + .row{
+    margin-top: 5px;
+}

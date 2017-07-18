@@ -1,0 +1,64 @@
+<ion-modal-view>
+
+        <ion-header-bar>
+          <h1 class="bar bar-header bar-dark title">Adjust Financed Fees</h1>
+        </ion-header-bar>
+        <ion-content>
+         <div class="list">   
+            <label class="row item item-input item-stacked-label  paddingleft10">
+                <span class="input-label paymentestfeelabel">Total Equipment Cost:</span>
+                <input type="number" ng-model="cs.savedestimatorinfo.salesprice" type="text" placeholder=""  required="">
+            </label>
+
+            <label class="row item item-input item-stacked-label paddingleft10">
+                <span class="input-label paymentestfeelabel">Trade In:-</span>
+                <input type="number" ng-model="cs.savedestimatorinfo.tradein" type="text" placeholder=""  required="">
+            </label>
+
+            <label class="row item item-input item-stacked-label  paddingleft10">
+                <span class="input-label paymentestfeelabel">Cash Down Payment:-</span>
+                <input type="number" ng-model="cs.savedestimatorinfo.cashdown" type="text" placeholder=""  required="">
+            </label>
+
+            <label class="row item item-input item-stacked-label  paddingleft10">
+                <span class="input-label paymentestfeelabel">Fedral Excise Tax:+</span>
+                <input type="number" ng-model="cs.savedestimatorinfo.fedtax" type="text" placeholder=""  required="">
+            </label>
+
+            <label class="row item item-input item-stacked-label  paddingleft10">
+                <span class="input-label paymentestfeelabel">Warranty:+</span>
+                <input type="number" ng-model="cs.savedestimatorinfo.warranty" type="text" placeholder=""  required="">
+            </label>
+
+            <label class="row item item-input item-stacked-label  paddingleft10">
+                <span class="input-label paymentestfeelabel">Title/Lien/Filing Fes:+</span>
+                <input type="number" ng-model="cs.savedestimatorinfo.titlefee" type="text" placeholder=""  required="">
+            </label>
+
+            <label class="row item item-input item-stacked-label  paddingleft10">
+                <span class="input-label paymentestfeelabel">Fl Doc Stamp:+</span>
+                <input type="number" ng-model="cs.savedestimatorinfo.fldocfee" type="text" placeholder=""  required="">
+            </label>
+
+            <label class="row item item-input item-stacked-label  paddingleft10">
+                <span class="input-label paymentestfeelabel">Upfront Sale tax:+</span>
+                <input type="number" ng-model="cs.savedestimatorinfo.upfront" type="text" placeholder=""  required="">
+            </label>
+            <label class="row item item-input item-stacked-label  paddingleft10">
+                <span class="input-label paymentestfeelabel">Total Amount Financed:</span>
+                <input type="number" ng-model="cs.savedestimatorinfo.totalfinamt" type="text" placeholder=""  required="">
+            </label>
+
+            <div class="row paddingtop50">
+            
+                <div class="col text-left">
+                    <a class="button button-small   button-dark" ng-click="closeModal()">Back</a>
+                </div>
+                <div class="col text-right">
+                    <a class="button button-small item-button-right  button-dark" ng-click="openNonFinModal()">Adjust Non Financed Fees</a>
+                </div> 
+            </div>
+         </div>
+        </ion-content>
+   
+	</ion-modal-view>

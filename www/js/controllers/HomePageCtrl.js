@@ -15,9 +15,11 @@
 			    	hp.userdata=loginService.getUserData();
 			    	
 			    }
-
-
 				$scope.decode=function(){
+					$location.path('/mainapp/paymentest');
+				}
+
+				$scope.decode1=function(){
 				cordova.plugins.barcodeScanner.scan(
 				      function (result) {
                        var text=result.text;  
@@ -391,11 +393,11 @@
      		'<ion-content>'+
       		' <div><a class="button icon icon-left ion-document-text button-stable">Action</a></div>' +
          	'<HR>'+
-         	' <div><a class="button icon icon-left ion-document-text button-stable">View Notification</a></div>' +
+         	' <div><a class="button icon icon-left ion-document-text button-stable fullwidth">View Notification</a></div>' +
          	'<HR>'+
-          	' <div><a class="button icon icon-left ion-arrow-return-right button-stable">Copy to New App</a></div>' +
+          	' <div><a class="button icon icon-left ion-arrow-return-right button-stable fullwidth">Copy to New App</a></div>' +
            	'<HR>'+
-          	' <div><a class="button icon icon-left ion-refresh button-stable">Resubmit Credit</a></div>' +
+          	' <div><a class="button icon icon-left ion-refresh button-stable fullwidth">Resubmit Credit</a></div>' +
       		'</ion-content>' +	
 			'</ion-modal-view>', {
 				scope: $scope,
@@ -865,9 +867,30 @@ angular.module('leasingApp')
   			});
 	})
 
-	angular.module('leasingApp').controller('barcodectrl',function($scope,$cordovaBarcodeScanner,qrquoteservice){
+	angular.module('leasingApp').controller('barcodectrl',function($scope,$cordovaBarcodeScanner,qrquoteservice,$ionicModal){
 		
-		
+		var paymentest=this;
+		paymentest.savedestimatorinfo={
+			model:$scope.model,
+			manufacturer:$scope.manu,
+			assetclass:$scope.assetclass,
+			year:'2018',
+			salesprice:'',
+			term:36,
+			product:'Loan-Precompute',
+			paymentoption:'Monthly',
+			tradein:0,
+			cashdown:0,
+			fedtax:0,
+			warranty:0,
+			titlefee:0,
+			fldocfee:0,
+			upfront:0,
+			totalfinamt:0,
+			dealeradinfee:0,
+			navcapfee:0,
+			totalnonfinamt:0
+		}
 
 		  $scope.$on("$ionicView.beforeEnter", function() {
 			  	var qrcodedata=qrquoteservice.getmodeldata();
@@ -878,8 +901,64 @@ angular.module('leasingApp')
 				$scope.price=qrcodedata.price;
 				$scope.category=qrcodedata.category;
 				$scope.imgsrc=qrcodedata.imgsrc;
-  			});
+				
+  			})
 
+			 $scope.modal=$ionicModal.fromTemplateUrl('views/paymentestimator/estimator-other-components.html', {
+   					 scope: $scope,
+    				 animation: 'slide-in-up'
+ 				 }).then(function(modal) {
+					$scope.modal = modal;
+				});
+			
+			
+
+ 			 $scope.openModal= function() {
+   					 $scope.modal.show();
+  				};
+
+			 $scope.closeModal = function() {
+				$scope.modal.hide();
+			};
+				
+			//Cleanup the modal when we're done with it!
+			$scope.$on('$destroy', function() {
+				$scope.modal.remove();
+			});
+				
+			// Execute action on hide modal
+			$scope.$on('modal.hidden', function() {
+				// Execute action
+			});
+				
+			// Execute action on remove modal
+			$scope.$on('modal.removed', function() {
+				// Execute action
+			});
+
+
+			 $ionicModal.fromTemplateUrl('views/paymentestimator/estimator-nonfin-components.html', {
+   					 scope: $scope,
+    				 animation: 'slide-in-up'
+ 				 }).then(function(modal) {
+					$scope.modalnonfin = modal;
+				});
+			
+			
+
+ 			 $scope.openNonFinModal= function() {
+   					 $scope.modalnonfin.show();
+  				};
+
+			 $scope.closeNonFinModal = function() {
+				$scope.modalnonfin.hide();
+			};
+				
+			//Cleanup the modal when we're done with it!
+			$scope.$on('$destroy', function() {
+				$scope.modalnonfin.remove();
+			});
+				
 		
 
 	})

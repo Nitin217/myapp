@@ -144,11 +144,11 @@ var leasingApp=angular.module('leasingApp', ['ionic','ngCordova','ngMap'])
 		      }
 		    }  
 		  })
-				.state('mainapp.generateQrcode', {
-		    url: '/generateqrcode',
+				.state('mainapp.paymentest', {
+		    url: '/paymentest',
 		      views: {
 		      'nomenuContent': {
-		        templateUrl: 'views/qrcode-generator.html'
+		        templateUrl: 'views/paymentestimator/estimator-model_det.html'
 		      }
 		    }  
 		  })
